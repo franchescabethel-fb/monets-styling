@@ -1,56 +1,45 @@
-// Simple dependency-free image carousel used on the Monet's Styling home page.
+// Adds click-and-drag scrolling to the horizontal, swipeable image gallery
+// on the Monet's Styling home page. Touch and trackpad swipe already work
+// natively via the browser; this just makes it drag-friendly with a mouse.
 (function () {
-  const root = document.getElementById("home-carousel");
-  if (!root) return;
+  const el = document.getElementById("home-hscroll");
+  if (!el) return;
 
-  const track = root.querySelector(".carousel-track");
-  const slides = Array.from(root.querySelectorAll(".carousel-slide"));
-  const prevBtn = root.querySelector(".carousel-arrow.prev");
-  const nextBtn = root.querySelector(".carousel-arrow.next");
-  const dotsWrap = root.querySelector(".carousel-dots");
+  let isDown = false;
+  let startX = 0;
+  let startScroll = 0;
+  let moved = false;
 
-  if (!slides.length) return;
-
-  let index = 0;
-  let timer = null;
-  const AUTOPLAY_MS = 5000;
-
-  // Build dots
-  const dots = slides.map((_, i) => {
-    const dot = document.createElement("button");
-    dot.className = "dot" + (i === 0 ? " active" : "");
-    dot.type = "button";
-    dot.setAttribute("aria-label", "Go to slide " + (i + 1));
-    dot.addEventListener("click", () => goTo(i));
-    dotsWrap.appendChild(dot);
-    return dot;
+  el.addEventListener("mousedown", (e) => {
+    isDown = true;
+    moved = false;
+    el.classList.add("dragging");
+    startX = e.pageX;
+    startScroll = el.scrollLeft;
   });
 
-  function update() {
-    track.style.transform = "translateX(-" + index * 100 + "%)";
-    dots.forEach((d, i) => d.classList.toggle("active", i === index));
-  }
+  window.addEventListener("mouseup", () => {
+    isDown = false;
+    el.classList.remove("dragging");
+  });
 
-  function goTo(i) {
-    index = (i + slides.length) % slides.length;
-    update();
-    restart();
-  }
+  window.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const dx = e.pageX - startX;
+    if (Math.abs(dx) > 4) moved = true;
+    el.scrollLeft = startScroll - dx;
+  });
 
-  function next() { goTo(index + 1); }
-  function prev() { goTo(index - 1); }
-
-  function restart() {
-    if (timer) clearInterval(timer);
-    timer = setInterval(next, AUTOPLAY_MS);
-  }
-
-  nextBtn.addEventListener("click", next);
-  prevBtn.addEventListener("click", prev);
-
-  root.addEventListener("mouseenter", () => timer && clearInterval(timer));
-  root.addEventListener("mouseleave", restart);
-
-  update();
-  restart();
+  // Prevent the click-through to a slide's link if the user was dragging.
+  el.addEventListener(
+    "click",
+    (e) => {
+      if (moved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    true
+  );
 })();
