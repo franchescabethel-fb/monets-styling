@@ -233,6 +233,41 @@ main {
   margin-top: 8px;
 }
 
+/* ---------- Portfolio project groups ---------- */
+
+.portfolio-groups {
+  margin-top: 36px;
+}
+
+.gallery-group {
+  margin-bottom: 48px;
+}
+
+.gallery-group:last-child {
+  margin-bottom: 0;
+}
+
+.group-title {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.gallery-grid .video-tile {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--ink);
+  box-shadow: 0 12px 30px -18px rgba(30,20,10,.35);
+}
+
+.gallery-grid .video-tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* ---------- Home swipeable gallery ---------- */
 
 .hscroll {
