@@ -37,7 +37,12 @@
     <h1 class="page-title">Styling Discovery Form</h1>
     <p class="page-intro">Tell us a bit about yourself and your styling goals. Once we receive your form, we'll follow up to confirm the details — or you can go ahead and grab a time on the calendar below.</p>
 
-    <form class="contact-form discovery-form" action="mailto:styling@shopmonets.com" method="post" enctype="text/plain">
+    <form class="contact-form discovery-form" action="https://formsubmit.co/styling@shopmonets.com" method="POST">
+      <input type="hidden" name="_subject" value="New Styling Discovery Form Submission">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://franchescabethel-fb.github.io/monets-styling/thank-you.html">
+
       <label for="name">Full Name</label>
       <input id="name" name="Full Name" type="text" required>
 
