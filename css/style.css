@@ -692,6 +692,11 @@ form.contact-form {
     outline: none;
   }
 
+  .menu-toggle svg {
+    display: block;
+    color: var(--ink);
+  }
+
   main { padding: 36px 22px 60px; }
   .hero h1, .page-title { font-size: 30px; }
   .gallery-grid { grid-template-columns: 1fr 1fr; }
