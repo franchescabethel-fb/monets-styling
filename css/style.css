@@ -319,6 +319,15 @@ main {
   align-items: start;
 }
 
+.about-portrait {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 24px;
+  box-shadow: 0 12px 30px -18px rgba(30,20,10,.35);
+}
+
 .about-layout .quote-card {
   background: var(--card);
   border-radius: var(--radius);
