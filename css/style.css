@@ -675,10 +675,21 @@ form.contact-form {
     justify-content: center;
     width: 40px;
     height: 40px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--ink);
     border-radius: 10px;
     background: var(--card);
+    color: var(--ink);
     font-size: 18px;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+
+  .menu-toggle:focus,
+  .menu-toggle:active {
+    border-color: var(--ink);
+    outline: none;
   }
 
   main { padding: 36px 22px 60px; }
