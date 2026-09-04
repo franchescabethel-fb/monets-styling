@@ -1,6 +1,6 @@
-/* ===========================================================
+/* ==========================================================
    Monet's Styling — shared stylesheet
-   =========================================================== */
+   ========================================================== */
 
 :root {
   --cream: #f7f1e6;
@@ -625,6 +625,148 @@ form.contact-form {
   color: var(--muted);
   margin-top: 40px;
   opacity: .7;
+}
+
+/* ---------- Process steps (home hero) ---------- */
+
+.process-steps {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.process-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--tan);
+  color: #3c2c1c;
+  font-weight: 700;
+  font-size: 13px;
+  font-family: "Playfair Display", serif;
+}
+
+.process-label {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.process-arrow {
+  color: var(--tan-deep);
+  font-size: 16px;
+}
+
+.hero-sub {
+  max-width: 600px;
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin-top: 18px;
+}
+
+/* ---------- Services: price label ---------- */
+
+.package-card .price small {
+  display: block;
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  opacity: .75;
+  margin-bottom: 2px;
+}
+
+/* ---------- Add-on categories ---------- */
+
+.addon-category {
+  margin-bottom: 34px;
+}
+
+.addon-category:last-child { margin-bottom: 0; }
+
+.addon-category-title {
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--tan-deep);
+  margin-bottom: 10px;
+}
+
+/* ---------- About: lede + journey placeholders ---------- */
+
+.about-lede {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.image-placeholder {
+  aspect-ratio: 3/4;
+  border-radius: var(--radius);
+  border: 2px dashed var(--tan);
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: .02em;
+}
+
+/* ---------- Contact: inspiration photo dropzone ---------- */
+
+.dropzone {
+  border: 2px dashed var(--line);
+  border-radius: 14px;
+  padding: 26px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease;
+  background: #fff;
+}
+
+.dropzone.dragover {
+  border-color: var(--tan-deep);
+  background: var(--cream);
+}
+
+.dropzone-title {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.dropzone-sub {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.dropzone-files {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--tan-deep);
+  text-align: left;
 }
 
 /* ---------- Responsive ---------- */
