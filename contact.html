@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <form class="contact-form" action="https://formsubmit.co/styling@shopmonets.com" method="POST">
+      <form class="contact-form" action="https://formsubmit.co/styling@shopmonets.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="New Contact Form Submission">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
@@ -65,6 +65,48 @@
         <label for="email">Email</label>
         <input id="email" name="Email" type="email" required>
 
+        <label for="service">Service Interested In</label>
+        <select id="service" name="Service Interested In">
+          <option value="">Select a service</option>
+          <optgroup label="For Women">
+            <option>The Everyday Muse</option>
+            <option>The Creative Chic</option>
+            <option>The Bridal Edit</option>
+            <option>The Boss Babe Capsule</option>
+            <option>The Getaway Girl</option>
+            <option>Closet Confidential (Women)</option>
+          </optgroup>
+          <optgroup label="For Men">
+            <option>The Everyday Gentleman</option>
+            <option>The Executive Edge</option>
+            <option>The Groom Edit</option>
+            <option>The Creative Edit</option>
+            <option>The Jetsetter</option>
+            <option>Closet Confidential (Men)</option>
+          </optgroup>
+          <option>Photoshoot Styling</option>
+          <option>Custom</option>
+          <option>Not sure yet</option>
+        </select>
+
+        <label for="addons">Add-ons of Interest (optional)</label>
+        <input id="addons" name="Add-ons of Interest" type="text" placeholder="e.g. rush styling, lookbook, shopping concierge">
+
+        <label for="budget">Budget Range</label>
+        <input id="budget" name="Budget Range" type="text" placeholder="e.g. $500–$750">
+
+        <div class="checkbox-row" style="margin-top:18px;">
+          <label class="checkbox-option"><input type="checkbox" name="Same-Day / Rush Request" value="Yes"> This is a same-day/rush request</label>
+        </div>
+
+        <label for="inspiration">Inspiration Photos (optional)</label>
+        <div class="dropzone" id="dropzone">
+          <input id="inspiration" name="Inspiration Photos" type="file" accept="image/*" multiple hidden>
+          <span class="dropzone-title">Drag &amp; drop photos here</span>
+          <span class="dropzone-sub">or click to browse</span>
+          <div class="dropzone-files" id="dropzone-files"></div>
+        </div>
+
         <label for="message">Message</label>
         <textarea id="message" name="Message" required></textarea>
 
@@ -75,5 +117,34 @@
     <p class="built-with">Monet's Styling</p>
   </main>
 </div>
+<script>
+(function(){
+  var dz = document.getElementById('dropzone');
+  var input = document.getElementById('inspiration');
+  var fileList = document.getElementById('dropzone-files');
+  if (!dz || !input) return;
+  dz.addEventListener('click', function(){ input.click(); });
+  ['dragenter','dragover'].forEach(function(evt){
+    dz.addEventListener(evt, function(e){ e.preventDefault(); dz.classList.add('dragover'); });
+  });
+  ['dragleave','drop'].forEach(function(evt){
+    dz.addEventListener(evt, function(e){ e.preventDefault(); dz.classList.remove('dragover'); });
+  });
+  dz.addEventListener('drop', function(e){
+    if (e.dataTransfer && e.dataTransfer.files.length) {
+      input.files = e.dataTransfer.files;
+      updateFileList();
+    }
+  });
+  input.addEventListener('change', updateFileList);
+  input.addEventListener('click', function(e){ e.stopPropagation(); });
+  function updateFileList(){
+    var files = input.files;
+    if (!files || !files.length) { fileList.textContent = ''; return; }
+    var names = Array.prototype.map.call(files, function(f){ return f.name; });
+    fileList.textContent = names.join(', ');
+  }
+})();
+</script>
 </body>
 </html>
